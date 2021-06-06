@@ -1,2 +1,2 @@
 # SFML
-This repository is a place where I upload everything related to SFML library like examples, exercises and some simple videogames
+Repository where I upload everything I'm practising with SFML like exercises, examples and simple simple videogames that I have made.
