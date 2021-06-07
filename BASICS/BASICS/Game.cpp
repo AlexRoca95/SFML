@@ -7,7 +7,7 @@ const float PLAYERSPEED = 100.0f;
 const Time TIMEPERFRAME = seconds(1.f / 60.f);   // FRAME RATE OF OUR GAME ( 60 FPS )
 
 // CONSTRUCTOR 
-GAME::GAME():myWindow(VideoMode(800,600), "My Videogame"), mPlayer()
+GAME::GAME():myWindow(VideoMode(800,600), "My Videogame"), mPlayer(), texture()
 {	
 
 	// LOADING TEXTURE
