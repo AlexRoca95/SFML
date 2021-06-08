@@ -5,7 +5,9 @@
 int main()
 {	
 	TextureHolder textures;
-	textures.loadTexture(Textures::Airplane, "Media/Textures/Airplane.png"); // Load texture
+	textures.loadTexture(Textures::Airplane, "Media/Textures/Airplane.png"); // Load Airplane texture
+	textures.loadTexture(Textures::Landscape, "Media/Textures/Desert.png"); // Load Dessert texture
+	textures.loadTexture(Textures::Missile, "Media/Textures/Missile.png");	// Load Missile texture
 
 	sf::Sprite playerPlane;
 	playerPlane.setTexture(textures.get(Textures::Airplane));

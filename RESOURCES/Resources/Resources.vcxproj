@@ -154,6 +154,7 @@
   <ItemGroup>
     <Image Include="Media\Textures\Airplane.png" />
     <Image Include="Media\Textures\Desert.png" />
+    <Image Include="Media\Textures\Missile.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
