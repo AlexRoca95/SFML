@@ -24,6 +24,8 @@ private:
 
 public:
 	void load(Identifier, const std::string&);
+	template <typename Parameter>
+	void load(Identifier, const std::string&, const Parameter&);
 	Resource& get(Identifier);
 	const Resource& get(Identifier) const;
 };
@@ -53,6 +55,28 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string
 	// You should only use this for error checks! When you know it works, you remove it
 	// This Check if we insert a duplicated ID
 	assert(inserted.second);		// Second value of inserted has the boolean member of the pair
+
+}
+
+// Method that loads a Shader. 
+// An overloaded function for load is needed because the loadFromFile needs two arguments in order to load
+// both vertex and fragment shader
+template <typename Resource, typename Identifier>
+template <typename Parameter>
+void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string& pathFile, const Parameter& secondParam)
+{
+	
+	std::unique_ptr<Resource> resource(new Resource());
+
+	if (!resource->loadFromFile(pathFile, secondParam))		// Check if file could be uploaded
+	{
+		// Failed to load the file (Runtime error)
+		throw std::runtime_error("ResourceHolder::load - Failed to load " + pathFile);
+	}
+
+	auto inserted = mTextureMap.insert(make_pair(id, move(resource)));
+
+	assert(inserted.second);
 
 }
 
