@@ -1,0 +1,26 @@
+#include <SFML/Graphics.hpp>
+
+int main()
+{
+
+	sf::RenderWindow window(sf::VideoMode(640, 480), "My window with textures");
+
+	while (window.isOpen())
+	{
+		// Check if user wants to close window
+		sf::Event event;
+
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+
+		}
+
+
+		window.clear();
+		window.display();
+	}
+
+	return 0;
+}

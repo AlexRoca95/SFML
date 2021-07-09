@@ -20,7 +20,7 @@ private:
 	// This is a map where we store a key-value pair.
 	// In this case it associate a texture ID with a pointer 
 	// to the rersource that needs to be loaded with that ID
-	std::map<Identifier, std::unique_ptr<Resource>> mTextureMap;
+	std::map<Identifier, std::unique_ptr<Resource>> mResourceMap;
 
 public:
 	void load(Identifier, const std::string&);
@@ -48,7 +48,7 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string
 	}
 
 	// make_pair --> constructs a key-value pair for the map
-	auto inserted = mTextureMap.insert(make_pair(id, move(resource)));
+	auto inserted = mResourceMap.insert(make_pair(id, move(resource)));
 
 	// Macro that evaluates the expression (only in Debug mode) if it is false
 	// a checkpoint is triggered, halting the program. 
@@ -74,7 +74,7 @@ void ResourceHolder<Resource, Identifier>::load(Identifier id, const std::string
 		throw std::runtime_error("ResourceHolder::load - Failed to load " + pathFile);
 	}
 
-	auto inserted = mTextureMap.insert(make_pair(id, move(resource)));
+	auto inserted = mResourceMap.insert(make_pair(id, move(resource)));
 
 	assert(inserted.second);
 
@@ -88,10 +88,10 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 	//			(in this case type iterator)
 	// find --> Searchs in the map for an element with a key equivalent to id.
 	//			Returns an iterator if it is found or an interator to map::end
-	auto found = mTextureMap.find(id);
+	auto found = mResourceMap.find(id);
 
 	// Check if resource was founded. Halt program if not
-	assert(found != mTextureMap.end());
+	assert(found != mResourceMap.end());
 
 	return *found->second;		// Returns the value of the pair key-value (2º one = value = resource)
 
@@ -102,8 +102,8 @@ Resource& ResourceHolder<Resource, Identifier>::get(Identifier id)
 template <typename Resource, typename Identifier>
 const Resource& ResourceHolder<Resource, Identifier>::get(Identifier id) const
 {
-	auto found = mTextureMap.find(id);
-	assert(found != mTextureMap.end());
+	auto found = mResourceMap.find(id);
+	assert(found != mResourceMap.end());
 
 	return *found->second;
 
