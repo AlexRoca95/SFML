@@ -1,9 +1,12 @@
-#include <SFML/Graphics.hpp>
+#include "Aircraft.h"
 
 int main()
-{
+{	
+	ResourceHolder < sf::Texture, Textures::ID > mTextures;
+	mTextures.load(Textures::Raptor, "Media/Raptor.png");
+	//Aircraft plane(Aircraft::Type Raptor, mTextures);
 
-	sf::RenderWindow window(sf::VideoMode(640, 480), "My window with textures");
+	sf::RenderWindow window(sf::VideoMode(640, 480), "World Drawing");
 
 	while (window.isOpen())
 	{

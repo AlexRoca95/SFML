@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Aircraft.h" />
+    <ClInclude Include="ResourceHolder.h" />
     <ClInclude Include="sceneNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

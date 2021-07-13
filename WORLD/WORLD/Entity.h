@@ -4,7 +4,7 @@
 
 #include "sceneNode.h"
 
-class Entity : public sceneNode
+class Entity : public sceneNode  // Inherits sceneNode so that entities can be rendered by SFML
 {
 
 public:
