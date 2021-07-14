@@ -13,6 +13,7 @@ public:
 	sf::Vector2f getVelocity() const;
 private:
 	sf::Vector2f mVelocity;		// Automatically initialized to zere by default constructor
+	virtual void updateCurrent(sf::Time);
 
 };
 

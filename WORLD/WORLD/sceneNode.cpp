@@ -69,3 +69,49 @@ void sceneNode::drawCurrent(sf::RenderTarget& target, sf::RenderStates states) c
 {
 	// Does nothing by default. Derived classes will override it
 }
+
+
+void sceneNode::update(sf::Time dt)
+{
+	updateCurrent(dt);
+	updateChildren(dt);
+}
+
+// Update of the current Node
+void sceneNode::updateCurrent(sf::Time dt)
+{
+	// Does nothing by default. Derived classes will override it and do specefic update functionality
+}
+
+// Updates all the children nodes
+void sceneNode::updateChildren(sf::Time dt)
+{
+	for (auto itr = mChildren.begin(); itr != mChildren.end(); ++itr)
+	{
+		(*itr)->update(dt);
+	}
+}
+
+// Takes into account all the transforms of the parent nodes
+sf::Transform sceneNode::getWorldTransform() const
+{
+	// Represents the identity of the transform (clarifies the way how transforms are applied from the beginning)
+	sf::Transform transform = sf::Transform::Identity;	
+
+	for (const sceneNode *node = this; node != nullptr; node = node->mParent)
+	{
+		transform = node->getTransform() * transform;
+	}
+
+	return transform;
+}
+
+// Returns the absolute position of the world
+sf::Vector2f sceneNode::getWorldPosition() const
+{
+	sf::Vector2f absolutePos = getWorldTransform() * sf::Vector2f();
+
+	return absolutePos;
+
+}
+

@@ -23,10 +23,16 @@ public:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;		
 	virtual void drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
+	// Update
+	void update(sf::Time dt);
+
+	sf::Transform getWorldTransform() const;
+	sf::Vector2f getWorldPosition() const;
+
 private:
 	std::vector<Ptr> mChildren;				// We use the Ptr type that we defined previously
 	sceneNode* mParent;
-
-
+	virtual void updateCurrent(sf::Time dt);
+	void updateChildren(sf::Time dt);
 };
 #endif // !sceneNode.h
