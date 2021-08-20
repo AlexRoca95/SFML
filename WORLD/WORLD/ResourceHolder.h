@@ -9,7 +9,7 @@
 // which clearly describes the intention and avoid possible name collisions
 namespace Textures
 {
-	enum ID { Eagle, Raptor };
+	enum ID { Eagle, Raptor, Desert };
 }
 
 // We use a template class so it can be used with every type of resource
