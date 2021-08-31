@@ -1,6 +1,2 @@
-﻿  Game.cpp
-C:\Estudios\C++\SFML\WORLD\WORLD\Game.cpp(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  World.cpp
-  main.cpp
-  Generating Code...
+﻿  World.cpp
   WORLD.vcxproj -> C:\Estudios\C++\SFML\WORLD\Debug\WORLD.exe
